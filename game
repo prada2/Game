@@ -1,0 +1,401 @@
+from typing import List
+
+name = input("Enter name: ")
+print(f"Hello {name} and welcome to monster run. The objective of this game is to defeat the monster that has whipped out the entire human race of Toronto. There is 3 houses each with a chest. Pick up the key in every house to unlock the chest. One of the chests will have a stick of dynamite 🧨 . This dynamite is the ony thing that can defeat the monster.")
+
+print()
+
+print("You will get the choice of 6 weapons once you enter every house. You will have to face the monster 2 times at every house. You will be givin 3 lives while the monster has 10. Each time you throw the dynamite at the monster, it will loose 5 lives. One wrong move and you loose 3 lives.") 
+
+print()
+
+print("Are you ready?")
+print("[1] Yes ✔️")
+print("[2] No ❌")
+
+while True:
+    try:
+        run = int(input("> "))
+        if run == 1:
+            break
+        elif run == 2:
+            print("Good Bye")
+    except ValueError:
+        print("INVALID")
+
+def main():
+    game_state = [
+        "Outside",  # 0 - location
+        [],  # 1 - house #1
+        [],  # 2 - house #2
+        [],  # 3 - house #3
+    ] 
+
+    weapons = [
+        "Gun",
+        "Axe",
+        "Unbrella",
+        "Hot Dog",
+        "Bone",
+        "Pencil",
+    ]
+
+    location = game_state[0]
+    if location == "house_1":
+        house_1(game_state)
+    elif location == "house_2":
+        house_2(game_state)
+
+    elif location == "house_3":
+        house_3(game_state)
+
+    weapon_choice = " "
+    weapon = which_weapon(weapon_choice)  
+    print(weapon)
+
+    print()
+    house_choice = print("Which house would you like to visit? ")
+    house = which_house(location) 
+    print(house)
+
+
+def which_weapon(weapon_choice: int) -> int:
+    while True:
+        print()
+        print("Choose your weapon:")
+        print("[1] Gun 🔫")   
+        print("[2] Axe 🪓")
+        print("[3] Umbrella ☂️")
+        print("[4] Hot Dog 🌭")
+        print("[5] Bone 🦴")
+        print("[6] Pencil ✏️")
+        try: 
+            weapon_choice = int(input("> "))
+            if weapon_choice == 1:
+                weapon_choice == "Gun 🔫"
+                return "Weapon of choice: Gun 🔫" 
+            elif weapon_choice == 2:
+                weapon_choice == "Axe 🪓"
+                return "Weapon of choice: Axe 🪓"
+            elif weapon_choice == 3:
+                weapon_choice == "Umbrella ☂️"
+                return "Weapon of choice: Umbrella ☂️" 
+            elif weapon_choice == 4:
+                weapon_choice == "Hot Dog 🌭"
+                return "Weapon of choice: Hot Dog 🌭" 
+            elif weapon_choice == 5:
+                weapon_choice == "Bone 🦴"
+                return "Weapon of choice: Bone 🦴" 
+            elif weapon_choice == 6:
+                weapon_choice == "Pencil ✏️"
+                return "Weapon of choice: Pencil ✏️"
+            else:
+                print("Invalid choice of weapon.")
+                print()
+    
+        except ValueError:
+            print("Must enter number.")
+
+
+def house_1(location: str) -> str:
+    print()
+    print("In House 1")
+    print("Health: ❤️  ❤️  ❤️")
+    while True:
+        print()
+        print("Pick up key")
+        print("[1] Pick up ✔️")
+        print("[2] Leave ❌")
+        try:
+            run = int(input("> "))
+            if run == 1:
+                break
+            elif run == 2:
+                print("Must pick up key")
+        except ValueError:
+            print("INVALID")
+
+    print("Objective: Open chest")
+    print()
+    print("Guess the password to unlock the chest.")
+    print("You will have 6 attempts to guessing before it self destructs.")
+    print()
+
+
+    
+    print("_ _ _ _")
+    print()
+    word = "code"
+
+    max_attempts = 6
+    current_guesses_total = 0
+    letters_in_word = []
+    current_guess = ""
+
+    while True:
+        word = "code"
+        current_guess = 0
+        letters_in_word = len(word) * "_"
+
+        print("HINT: the word starts with c and ends with e")
+        print("Objective: Guess the word to unlock this door")
+        print("This word is ", len(letters_in_word), " letters")
+        print()
+
+        while current_guesses_total < max_attempts:
+            current_guess = input("Enter a letter: ")
+
+            for i in range(0, len(word)):
+                if word[i] == current_guess:
+                    letters_in_word = letters_in_word[:
+                    i] + current_guess + letters_in_word[
+                    i + 1:]
+                    print("LETTER!")
+                    print(letters_in_word)
+
+            if word == letters_in_word:
+                print()
+                print("Chest is empty")
+                return which_house(location)
+            current_guesses_total += 1
+
+        print()
+        print("The password was: ", word)
+        print("Health: ❤  ❤  ❤")
+        print("Game Over!")
+        break
+
+
+def house_2(location: str) -> str:
+    print()
+    print("In House 2")
+    print("Health: ❤️  ❤️  ❤️")
+    while True:
+        print()
+        print("Pick up key")
+        print("[1] Pick up ✔️")
+        print("[2] Leave ❌")
+        try:
+            run = int(input("> "))
+            if run == 1:
+                break
+            elif run == 2:
+                print("Must pick up key")
+        except ValueError:
+            print("INVALID")
+
+    print("Objective: Open chest")
+    print()
+    print("Guess the password to unlock the chest.")
+    print("You will have 6 attempts to guessing before it self destructs.")
+    print()
+
+
+    
+    print("_ _ _ _")
+    print()
+    word = "word"
+
+    max_attempts = 6
+    current_guesses_total = 0
+    letters_in_word = []
+    current_guess = ""
+
+    while True:
+        word = "word"
+        current_guess = 0
+        letters_in_word = len(word) * "_"
+
+        print("HINT: the word is in this sentence.")
+        print("Objective: Guess the word to unlock chest")
+        print("This word is ", len(letters_in_word), " letters")
+        print()
+
+        while current_guesses_total < max_attempts:
+            current_guess = input("Enter a letter: ")
+
+            for i in range(0, len(word)):
+                if word[i] == current_guess:
+                    letters_in_word = letters_in_word[:
+                    i] + current_guess + letters_in_word[
+                    i + 1:]
+                    print("LETTER!")
+                    print(letters_in_word)
+
+            if word == letters_in_word:
+                print()
+                print("Chest is empty")
+                return which_house(location)
+            current_guesses_total += 1
+
+        print()
+        print("The password was: ", word)
+        print("Health: ❤  ❤  ❤")
+        print("Game over")
+        break
+
+
+def house_3(location: str) -> str:
+    print("In House 3")
+    print("Health: ❤️  ❤️  ❤️")
+    while True:
+        print()
+        print("Pick up key")
+        print("[1] Pick up ✔️")
+        print("[2] Leave ❌")
+        try:
+            run = int(input("> "))
+            if run == 1:
+                break
+            elif run == 2:
+                print("Must pick up key")
+        except ValueError:
+            print("INVALID")
+
+    print("Objective: Open chest")
+    print()
+    print("Guess the password to unlock the chest.")
+    print("You will have 6 attempts to guessing before it self destructs.")
+    print()
+
+    print("_ _ _ _")
+    print()
+    word = "work"
+
+    max_attempts = 6
+    current_guesses_total = 0
+    letters_in_word = []
+    current_guess = ""
+
+    while True:
+        word = "work"
+        current_guess = 0
+        letters_in_word = len(word) * "_"
+
+        print("HINT: an english essay is a lot of .... ")
+        print("Objective: Guess the word to unlock this door")
+        print("This word is ", len(letters_in_word), " letters")
+        print()
+
+        
+        while current_guesses_total < max_attempts:
+            current_guess = input("Enter a letter: ")
+
+            for i in range(0, len(word)):
+                if word[i] == current_guess:
+                    letters_in_word = letters_in_word[:
+                    i] + current_guess + letters_in_word[
+                    i + 1:]
+                    print("LETTER!")
+                    print(letters_in_word)
+
+            if word == letters_in_word:
+                print()
+                print("You found the stick of dynamite 🧨")
+                print()
+                print("Are you ready to fight the monster?")
+                print("[1] Yes ✔️")
+                print("[2] No ❌")
+                try:
+                    run = int(input("> "))
+                    if run == 1:
+                        print()
+                        print("Monster Health: ❤️  ❤️  ❤️  ❤️  ❤️  ❤️  ❤️  ❤️  ❤️  ❤️")
+                        print("Health: ❤️  ❤️  ❤️")
+                        print()
+                        print("What is your move?")
+                        print("[1] Throw dynamite")   
+                        print("[2] Hide")
+                        print("[3] Block")
+                        while True:
+                            try:                            
+                                action = int(input("> "))
+                                if action == 1:
+                                    print("You threw dynamite at the monster.")
+                                    print("Monster Health: ❤️  ❤️  ❤️  ❤️  ❤️  ❤  ❤  ❤  ❤  ❤")
+                                    print("Health: ❤️  ❤️  ❤️")
+                                    print()
+                                    while True:
+                                        print("What is your move?")
+                                        print("[1] Throw dynamite")   
+                                        print("[2] Hide")
+                                        print("[3] Block")
+                                        try:
+                                            action_2 = int(input("> "))
+                                            if action_2 == 1:
+                                                print("You threw dynamite at the monster.")
+                                                print("Monster Health: ❤  ❤  ❤  ❤  ❤  ❤  ❤  ❤  ❤  ❤")
+                                                print("Health: ❤️  ❤️  ❤️")
+                                                print()
+                                                print("Monster has been defeated")
+                                                print("YOU WIN!")
+                                                current_guesses_total = max_attempts
+                                                break
+
+                                            elif action_2 == 2:
+                                                print("Monster killed you")
+                                                print("Health: ❤  ❤  ❤")
+                                                print("Game over!")
+                                                current_guesses_total = max_attempts
+                                                break
+
+                                            elif action_2 == 3:
+                                                print("Monster killed you")
+                                                print("Health: ❤  ❤  ❤")
+                                                print("Game over!")
+                                                current_guesses_total = max_attempts
+                                                break
+                                        
+                                        except ValueError:
+                                            print("Must enter number.")
+                         
+                                elif action == 2:
+                                    current_guesses_total = max_attempts
+                                    break
+
+                                elif action == 3:
+                                    current_guesses_total = max_attempts
+                                    break
+
+                            except ValueError:
+                                print("Must enter number.")
+
+                    elif run == 2:
+                        print("Must fight the monster.")
+                except ValueError:
+                    print("INVALID")
+
+        print("Monster killed you")
+        print("Health: ❤  ❤  ❤")
+        print("Game Over!")
+        break
+
+def which_house(location: str) -> str:
+    run = True
+    while run == True:
+        print("🏠 🏠 🏠")
+        print("[1] House #1")
+        print("[2] House #2")
+        print("[3] House #3")
+
+        try: 
+            choice = int(input("> "))
+            if choice == 1:
+                location == "house_1"
+                house_1(location)
+                run = False
+            elif choice == 2:
+                location == "house_2"
+                house_2(location)
+                run = False
+            elif choice == 3:
+                location == "house_3"
+                house_3(location)
+                run = False
+
+        except ValueError:
+            print("Must enter number.")
+
+
+if __name__ == "__main__":
+    main()
